@@ -9,6 +9,9 @@ import java.time.Instant;
 import java.util.List;
 import java.util.UUID;
 
+/**
+ * Spring Data JPA repository for audit log  persistence.
+ */
 @Repository
 public interface AuditLogRepository extends JpaRepository<AuditLog, UUID> {
     List<AuditLog> findByStoreId(String storeId, Pageable pageable);

@@ -6,6 +6,9 @@ import com.digicart.auditlog.repository.AuditSettingsRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+/**
+ * Application service implementing audit settings use cases for <em>audit-log-service</em>.
+ */
 @Service
 public class AuditSettingsService {
 

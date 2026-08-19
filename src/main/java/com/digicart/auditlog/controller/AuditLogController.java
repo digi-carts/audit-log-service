@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Map;
 import java.util.UUID;
 
+/**
+ * REST controller exposing audit log HTTP APIs for <em>audit-log-service</em>.
+ */
 @RestController
 @RequestMapping("/audit-logs")
 public class AuditLogController {
