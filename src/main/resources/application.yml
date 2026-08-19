@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: audit-log-service
+  datasource:
+    url: ${DATABASE_URL}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-master.xml
+    default-schema: audit_log_svc
+    liquibase-schema: audit_log_svc
+
+server:
+  port: ${PORT:3012}
