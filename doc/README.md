@@ -63,3 +63,7 @@ mvn spring-boot:run
 
 - [api-gateway](https://github.com/digi-carts/api-gateway/blob/stage/doc/README.md)
 - [platform-ui](https://github.com/digi-carts/platform-ui/blob/stage/doc/README.md)
+
+## REST API reference
+
+See [api.md](api.md) for every HTTP endpoint generated from Spring controllers.

@@ -25,8 +25,25 @@ public class AuditSettings {
     @Column(name = "updated_at")
     private Instant updatedAt;
 
+    /**
+     * Returns id.
+     * @return the integer
+     */
     public Integer getId() { return id; }
+    /**
+     * Returns retention days.
+     * @return the integer
+     */
     public Integer getRetentionDays() { return retentionDays; }
+    /**
+     * Sets retention days.
+     *
+     * @param retentionDays retention days
+     */
     public void setRetentionDays(Integer retentionDays) { this.retentionDays = retentionDays; }
+    /**
+     * Returns updated at.
+     * @return the instant
+     */
     public Instant getUpdatedAt() { return updatedAt; }
 }

@@ -15,10 +15,22 @@ public class AuditSettingsController {
 
     private final AuditSettingsService auditSettingsService;
 
+    /**
+     * Creates a new {@code AuditSettingsController}.
+     *
+     * @param auditSettingsService audit settings service collaborator
+     */
     public AuditSettingsController(AuditSettingsService auditSettingsService) {
         this.auditSettingsService = auditSettingsService;
     }
 
+    /**
+     * Handles GET.
+     *
+     * @param xUserId x user id
+     * @param xUserRole x user role
+     * @return HTTP response
+     */
     @GetMapping
     public ResponseEntity<?> getSettings(
         @RequestHeader(value = "X-User-Id", required = false) String xUserId,
@@ -27,6 +39,14 @@ public class AuditSettingsController {
         return ResponseEntity.ok(auditSettingsService.getSettings());
     }
 
+    /**
+     * Handles PUT.
+     *
+     * @param req request payload
+     * @param xUserId x user id
+     * @param xUserRole x user role
+     * @return HTTP response
+     */
     @PutMapping
     public ResponseEntity<?> update(
         @Valid @RequestBody AuditSettingsUpdateRequest req,
