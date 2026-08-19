@@ -9,6 +9,9 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import java.time.Instant;
 import java.util.UUID;
 
+/**
+ * JPA entity mapped in this service schema (Audit Log).
+ */
 @Entity
 @Table(name = "audit_log", schema = "audit_log_svc")
 @EntityListeners(AuditingEntityListener.class)
