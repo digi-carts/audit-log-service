@@ -19,10 +19,28 @@ public class AuditLogController {
 
     private final AuditLogService auditLogService;
 
+    /**
+     * Creates a new {@code AuditLogController}.
+     *
+     * @param auditLogService audit log service collaborator
+     */
     public AuditLogController(AuditLogService auditLogService) {
         this.auditLogService = auditLogService;
     }
 
+    /**
+     * Handles GET.
+     *
+     * @param service service
+     * @param level level
+     * @param storeId store (tenant) identifier
+     * @param userId caller user id from the gateway ({@code X-User-Id})
+     * @param page 1-based page index
+     * @param limit page size
+     * @param xUserId x user id
+     * @param xUserRole x user role
+     * @return HTTP response
+     */
     @GetMapping
     public ResponseEntity<?> findAll(
         @RequestParam(required = false) String service,
@@ -37,6 +55,14 @@ public class AuditLogController {
         return ResponseEntity.ok(auditLogService.findAll(service, level, storeId, userId, page, limit));
     }
 
+    /**
+     * Handles {@code GET /{id}}.
+     *
+     * @param id resource identifier
+     * @param xUserId x user id
+     * @param xUserRole x user role
+     * @return HTTP response
+     */
     @GetMapping("/{id}")
     public ResponseEntity<?> findById(
         @PathVariable UUID id,
@@ -48,6 +74,14 @@ public class AuditLogController {
             .orElse(ResponseEntity.notFound().build());
     }
 
+    /**
+     * Handles POST.
+     *
+     * @param req request payload
+     * @param xUserId x user id
+     * @param xUserRole x user role
+     * @return HTTP response
+     */
     @PostMapping
     public ResponseEntity<?> create(
         @Valid @RequestBody AuditLogCreateRequest req,
@@ -58,6 +92,14 @@ public class AuditLogController {
         return ResponseEntity.status(201).body(created);
     }
 
+    /**
+     * Handles {@code DELETE /{id}}.
+     *
+     * @param id resource identifier
+     * @param xUserId x user id
+     * @param xUserRole x user role
+     * @return HTTP response
+     */
     @DeleteMapping("/{id}")
     public ResponseEntity<?> delete(
         @PathVariable UUID id,
@@ -68,6 +110,12 @@ public class AuditLogController {
         return ResponseEntity.noContent().build();
     }
 
+    /**
+     * Handles {@code POST /purge}.
+     *
+     * @param xUserRole x user role
+     * @return HTTP response
+     */
     @PostMapping("/purge")
     public ResponseEntity<?> purge(
         @RequestHeader(value = "X-User-Role", required = false) String xUserRole

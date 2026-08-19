@@ -14,10 +14,19 @@ public class AuditSettingsService {
 
     private final AuditSettingsRepository auditSettingsRepository;
 
+    /**
+     * Creates a new {@code AuditSettingsService}.
+     *
+     * @param auditSettingsRepository audit settings repository collaborator
+     */
     public AuditSettingsService(AuditSettingsRepository auditSettingsRepository) {
         this.auditSettingsRepository = auditSettingsRepository;
     }
 
+    /**
+     * Returns settings.
+     * @return the audit settings
+     */
     public AuditSettings getSettings() {
         return auditSettingsRepository.findAll().stream().findFirst()
             .orElseGet(() -> {
@@ -26,6 +35,12 @@ public class AuditSettingsService {
             });
     }
 
+    /**
+     * Updates an existing record.
+     *
+     * @param req request payload
+     * @return the audit settings
+     */
     @Transactional
     public AuditSettings update(AuditSettingsUpdateRequest req) {
         AuditSettings settings = getSettings();

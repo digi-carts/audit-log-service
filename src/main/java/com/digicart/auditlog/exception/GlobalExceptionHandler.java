@@ -15,7 +15,12 @@ import java.util.stream.Collectors;
  */
 @RestControllerAdvice
 public class GlobalExceptionHandler {
-
+    /**
+     * Handle validation.
+     *
+     * @param ex ex
+     * @return HTTP response
+     */
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<?> handleValidation(MethodArgumentNotValidException ex) {
         var errors = ex.getBindingResult().getFieldErrors().stream()
@@ -27,21 +32,45 @@ public class GlobalExceptionHandler {
         return ResponseEntity.badRequest().body(Map.of("error", errors));
     }
 
+    /**
+     * Handle constraint.
+     *
+     * @param ex ex
+     * @return HTTP response
+     */
     @ExceptionHandler(ConstraintViolationException.class)
     public ResponseEntity<?> handleConstraint(ConstraintViolationException ex) {
         return ResponseEntity.badRequest().body(Map.of("error", ex.getMessage()));
     }
 
+    /**
+     * Handle not found.
+     *
+     * @param ex ex
+     * @return HTTP response
+     */
     @ExceptionHandler(NoSuchElementException.class)
     public ResponseEntity<?> handleNotFound(NoSuchElementException ex) {
         return ResponseEntity.status(404).body(Map.of("error", ex.getMessage()));
     }
 
+    /**
+     * Handle bad arg.
+     *
+     * @param ex ex
+     * @return HTTP response
+     */
     @ExceptionHandler(IllegalArgumentException.class)
     public ResponseEntity<?> handleBadArg(IllegalArgumentException ex) {
         return ResponseEntity.badRequest().body(Map.of("error", ex.getMessage()));
     }
 
+    /**
+     * Handle generic.
+     *
+     * @param ex ex
+     * @return HTTP response
+     */
     @ExceptionHandler(Exception.class)
     public ResponseEntity<?> handleGeneric(Exception ex) {
         return ResponseEntity.internalServerError().body(Map.of("error", "Internal server error"));
