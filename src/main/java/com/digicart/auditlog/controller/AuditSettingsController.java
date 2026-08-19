@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
  * REST controller exposing audit settings HTTP APIs for <em>audit-log-service</em>.
  */
 @RestController
-@RequestMapping("/audit-settings")
+@RequestMapping("/api/audit/settings")
 public class AuditSettingsController {
 
     private final AuditSettingsService auditSettingsService;

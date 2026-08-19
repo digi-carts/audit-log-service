@@ -14,7 +14,7 @@ import java.util.UUID;
  * REST controller exposing audit log HTTP APIs for <em>audit-log-service</em>.
  */
 @RestController
-@RequestMapping("/audit-logs")
+@RequestMapping("/api/audit")
 public class AuditLogController {
 
     private final AuditLogService auditLogService;
