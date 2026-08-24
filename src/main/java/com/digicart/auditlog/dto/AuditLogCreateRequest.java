@@ -2,6 +2,8 @@ package com.digicart.auditlog.dto;
 
 import jakarta.validation.constraints.NotBlank;
 
+import java.util.Map;
+
 /**
  * Request/response DTO: Audit Log Create Request.
  */
@@ -16,6 +18,6 @@ public record AuditLogCreateRequest(
     Integer statusCode,
     Integer duration,
     String message,
-    String meta,
+    Map<String, Object> meta,
     String ipAddress
 ) {}

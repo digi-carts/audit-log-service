@@ -7,6 +7,7 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.Instant;
+import java.util.Map;
 import java.util.UUID;
 
 /**
@@ -49,7 +50,7 @@ public class AuditLog {
 
     @JdbcTypeCode(SqlTypes.JSON)
     @Column(columnDefinition = "jsonb")
-    private String meta;
+    private Map<String, Object> meta;
 
     @Column(name = "ip_address")
     private String ipAddress;
@@ -79,8 +80,8 @@ public class AuditLog {
     public void setDuration(Integer duration) { this.duration = duration; }
     public String getMessage() { return message; }
     public void setMessage(String message) { this.message = message; }
-    public String getMeta() { return meta; }
-    public void setMeta(String meta) { this.meta = meta; }
+    public Map<String, Object> getMeta() { return meta; }
+    public void setMeta(Map<String, Object> meta) { this.meta = meta; }
     public String getIpAddress() { return ipAddress; }
     public void setIpAddress(String ipAddress) { this.ipAddress = ipAddress; }
     public Instant getCreatedAt() { return createdAt; }
