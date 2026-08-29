@@ -12,7 +12,7 @@
 
     <groupId>com.digicart</groupId>
     <artifactId>audit-log-service</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <name>audit-log-service</name>
     <description>digi-carts audit log service</description>
 

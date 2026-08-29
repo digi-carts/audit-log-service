@@ -10,6 +10,9 @@ import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
+/**
+ * Maps domain and validation failures to HTTP error payloads.
+ */
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 

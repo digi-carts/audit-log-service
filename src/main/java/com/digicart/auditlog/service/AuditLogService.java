@@ -16,6 +16,9 @@ import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.UUID;
 
+/**
+ * Application service implementing audit log use cases for <em>audit-log-service</em>.
+ */
 @Service
 public class AuditLogService {
 
